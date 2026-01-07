@@ -1,0 +1,2025 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>ICEITF</title>
+  
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICEITF - Engineering Innovations Conference</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0056b3;
+            --secondary: #003366;
+            --accent: #ff6b00;
+            --light: #f8f9fa;
+            --dark: #212529;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark);
+            background-color: #f5f5f5;
+            overflow-x: hidden;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        header.scrolled {
+            padding: 0.5rem 0;
+            background: rgba(0, 54, 102, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo img {
+            height: 50px;
+        }
+        
+        .logo-text h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        .logo-text span {
+            font-size: 0.9rem;
+            font-weight: 300;
+            display: block;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: all 0.3s ease;
+        }
+        
+        nav a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #2196f3;
+            transition: width 0.3s ease;
+        }
+        
+        nav a:hover:after {
+            width: 100%;
+        }
+        
+        nav a:hover {
+            color: #2196f3;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            max-height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                        url('https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center;
+            background-size: cover;
+            background-attachment: scroll;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 0 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            z-index: 2;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid var(--accent);
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+            margin-left: 1rem;
+        }
+        
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--primary);
+        }
+        
+        /* Floating Elements Animation */
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .floating-element {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+        
+        /* About Section */
+        .section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+        
+        
+        .about-content {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+        
+        .about-image {
+            flex: 1;
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Topics Section */
+        .topics {
+            background-color: #fafbfc;
+        }
+        
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .topic-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+            border: 1px solid #e8e9ea;
+            display: flex;
+            align-items: flex-start;
+            gap: 1.2rem;
+        }
+        
+        .topic-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+            border-color: #d0d5d8;
+        }
+        
+        .topic-icon {
+            background: linear-gradient(135deg, #e3f2fd 0%, #f0f7ff 100%);
+            color: #2196f3;
+            font-size: 1.8rem;
+            padding: 1rem;
+            border-radius: 10px;
+            flex-shrink: 0;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .topic-content {
+            flex: 1;
+        }
+        
+        .topic-content h3 {
+            margin-bottom: 0.8rem;
+            color: #003366;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        
+        .topic-content p {
+            color: #666;
+            line-height: 1.6;
+            font-size: 0.95rem;
+            margin: 0;
+        }
+        
+        /* Dates Section */
+        .dates {
+            background: linear-gradient(135deg, #f0f7ff 0%, #e8f4f8 100%);
+            padding: 4rem 2rem;
+        }
+        
+        .dates-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .dates-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .dates-header h2 {
+            font-size: 2.8rem;
+            color: #003366;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .dates-header p {
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .dates-grid {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .date-card {
+            background-color: white;
+            border: 2px solid #2196f3;
+            border-radius: 12px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(33, 150, 243, 0.15);
+            transition: all 0.3s ease;
+            min-width: 180px;
+            flex: 1;
+            max-width: 220px;
+        }
+        
+        .date-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(33, 150, 243, 0.25);
+            border-color: #1976d2;
+        }
+        
+        .date-card h3 {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: #003366;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+        
+        .date-card .date-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #ff7f50;
+        }
+        
+        .dates-submit-btn {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        
+        .dates-submit-btn button {
+            background: #ff7f50;
+            color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(255, 127, 80, 0.3);
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .dates-submit-btn button:hover {
+            background: #ff6347;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 127, 80, 0.4);
+        }
+        
+        @media (max-width: 992px) {
+            .dates-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+            
+            .date-card {
+                min-width: 150px;
+                max-width: 180px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .dates-header h2 {
+                font-size: 2.2rem;
+            }
+            
+            .dates-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .date-card {
+                max-width: 100%;
+                width: 100%;
+            }
+        }
+        
+        /* Call for Papers Section */
+        .call-for-papers {
+            padding: 4rem 2rem;
+            background: #fafafa;
+        }
+        
+        .call-for-papers-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .cfp-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .cfp-header h2 {
+            font-size: 2.8rem;
+            color: #003366;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        
+        .cfp-header p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-top: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .cfp-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        
+        .cfp-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+        
+        .cfp-card h3 {
+            color: #003366;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+        }
+        
+        .cfp-card h3 i {
+            color: #003366;
+            font-size: 1.3rem;
+        }
+        
+        .guidelines-list {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 2rem;
+        }
+        
+        .guidelines-list li {
+            padding: 0.8rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .guidelines-list li i {
+            color: #4caf50;
+            margin-top: 4px;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+        
+        .publication-text {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        
+        .publication-text strong {
+            color: #003366;
+            font-weight: 700;
+        }
+        
+        .publication-list {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 2rem;
+        }
+        
+        .publication-list li {
+            padding: 0.5rem 0;
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .template-box {
+            background: #e3f2fd;
+            border: 2px dashed #2196f3;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            text-align: center;
+        }
+        
+        .template-box-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 0.8rem;
+        }
+        
+        .template-box-header i {
+            color: #003366;
+            font-size: 1.2rem;
+        }
+        
+        .template-box-header span {
+            color: #003366;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+        
+        .template-box p {
+            color: #555;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        .template-btn {
+            background: #ff7f50;
+            color: white;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+            text-decoration: none;
+        }
+        
+        .template-btn:hover {
+            background: #ff6347;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(255, 127, 80, 0.3);
+        }
+        
+        .submit-box {
+            background: #e8f5e9;
+            border: 2px dashed #4caf50;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            text-align: center;
+        }
+        
+        .submit-box-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 0.8rem;
+        }
+        
+        .submit-box-header i {
+            color: #003366;
+            font-size: 1.2rem;
+        }
+        
+        .submit-box-header span {
+            color: #003366;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+        
+        .submit-box p {
+            color: #555;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        .submit-btn-primary {
+            background: #4caf50;
+            color: white;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+            text-decoration: none;
+        }
+        
+        .submit-btn-primary:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(76, 175, 80, 0.3);
+        }
+        
+        @media (max-width: 992px) {
+            .cfp-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .cfp-header h2 {
+                font-size: 2.2rem;
+            }
+        }
+        
+        /* Registration Section */
+        .registration-section {
+            padding: 4rem 2rem;
+            background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), 
+                        url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center;
+            background-size: cover;
+            background-attachment: scroll;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .registration-container {
+            max-width: 1000px;
+            width: 100%;
+        }
+        
+        .registration-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .registration-header h2 {
+            font-size: 3rem;
+            color: white;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        
+        .registration-header p {
+            font-size: 1.1rem;
+            color: white;
+            margin-top: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .registration-table-container {
+            background: #f0f0f0;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            overflow-x: auto;
+        }
+        
+        .registration-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .registration-table thead {
+            background: white;
+        }
+        
+        .registration-table thead th {
+            padding: 1rem;
+            text-align: left;
+            font-weight: 700;
+            color: #333;
+            font-size: 1rem;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        
+        .registration-table thead th:first-child {
+            text-align: left;
+        }
+        
+        .registration-table thead th:not(:first-child) {
+            text-align: right;
+        }
+        
+        .registration-table tbody tr.section-header {
+            background: #616161;
+            color: white;
+        }
+        
+        .registration-table tbody tr.section-header td {
+            padding: 1rem;
+            font-weight: 700;
+            text-align: center;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .registration-table tbody tr {
+            border-bottom: 1px solid #e0e0e0;
+            transition: background 0.2s ease;
+        }
+        
+        .registration-table tbody tr:last-child {
+            border-bottom: none;
+        }
+        
+        .registration-table tbody tr:hover {
+            background: #f5f5f5;
+        }
+        
+        .registration-table tbody tr.section-header:hover {
+            background: #616161;
+        }
+        
+        .registration-table tbody td {
+            padding: 1rem;
+            color: #333;
+            font-size: 0.95rem;
+        }
+        
+        .registration-table tbody td:first-child {
+            text-align: left;
+            font-weight: 400;
+        }
+        
+        .registration-table tbody td:not(:first-child) {
+            text-align: right;
+            font-weight: 500;
+        }
+        
+        @media (max-width: 768px) {
+            .registration-header h2 {
+                font-size: 2.2rem;
+            }
+            
+            .registration-table-container {
+                padding: 1rem;
+            }
+            
+            .registration-table thead th,
+            .registration-table tbody td {
+                padding: 0.7rem 0.5rem;
+                font-size: 0.85rem;
+            }
+        }
+        
+        /* Committees Section */
+        .committees-section {
+            padding: 4rem 2rem;
+            background: #e0f2f7;
+        }
+        
+        .committees-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .committees-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .committees-header h2 {
+            font-size: 2.8rem;
+            color: #003366;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .committees-header p {
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.6;
+            margin-top: 1rem;
+        }
+        
+        .committee-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-top: 2rem;
+        }
+        
+        .committee-card h3 {
+            font-size: 1.8rem;
+            color: #212529;
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+        
+        .committee-members {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem 2rem;
+            list-style: none;
+            padding: 0;
+        }
+        
+        .committee-members li {
+            color: #555;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            padding-left: 1.5rem;
+            position: relative;
+            padding-top: 0.3rem;
+            padding-bottom: 0.3rem;
+        }
+        
+        .committee-members li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.65rem;
+            width: 8px;
+            height: 8px;
+            background: #2196f3;
+            border-radius: 50%;
+        }
+        
+        @media (max-width: 992px) {
+            .committee-members {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem 1.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .committees-header h2 {
+                font-size: 2.2rem;
+            }
+            
+            .committee-members {
+                grid-template-columns: 1fr;
+                gap: 0.8rem;
+            }
+            
+            .committee-card {
+                padding: 1.5rem;
+            }
+        }
+        
+        /* Awards Section */
+        .awards-section {
+            padding: 4rem 2rem;
+            background: #ffffff;
+        }
+        
+        .awards-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .awards-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .awards-header h2 {
+            font-size: 2.8rem;
+            color: #003366;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .awards-header p {
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 12px;
+        }
+        
+        .award-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.2rem 1.5rem;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border-left: 3px solid #2196f3;
+            text-align: left;
+        }
+        
+        .award-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+            border-left-color: #1976d2;
+        }
+        
+        .award-content h3 {
+            font-size: 1rem;
+            color: #333;
+            font-weight: 500;
+            margin: 0;
+            line-height: 1.5;
+        }
+        
+        @media (max-width: 768px) {
+            .awards-header h2 {
+                font-size: 2.2rem;
+            }
+            
+            .awards-grid {
+                grid-template-columns: 1fr;
+                padding: 1.5rem;
+            }
+        }
+        
+        /* Call to Action */
+        .cta {
+            text-align: center;
+            padding: 4rem 2rem;
+            background-color: var(--accent);
+            color: white;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta p {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            padding: 3rem 2rem;
+            background: #e8eaf6;
+        }
+        
+        .contact-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .contact-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .contact-header h2 {
+            font-size: 2.2rem;
+            color: #003366;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 0.8rem;
+            display: inline-block;
+        }
+        
+        .contact-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: #2196f3;
+        }
+        
+        .contact-header p {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.5;
+            margin-top: 1rem;
+        }
+        
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        
+        .contact-info-card {
+            background: transparent;
+            padding: 0;
+        }
+        
+        .contact-details {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .contact-details li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+            margin-bottom: 1.2rem;
+            color: #333;
+        }
+        
+        .contact-details li i {
+            color: #2196f3;
+            font-size: 1.1rem;
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+        
+        .contact-details li strong {
+            color: #212529;
+            display: block;
+            margin-bottom: 0.2rem;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+        
+        .contact-details li span {
+            color: #555;
+            font-size: 0.9rem;
+        }
+        
+        .contact-details li span a {
+            color: #555;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .contact-details li span a:hover {
+            color: #2196f3;
+        }
+        
+        .contact-form-card {
+            background: white;
+            padding: 1.8rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+        
+        .contact-form-card h3 {
+            font-size: 1.3rem;
+            color: #212529;
+            margin-bottom: 1.2rem;
+            font-weight: 700;
+            text-align: left;
+        }
+        
+        .form-group-contact {
+            margin-bottom: 1.2rem;
+        }
+        
+        .form-group-contact label {
+            display: block;
+            margin-bottom: 0.4rem;
+            color: #333;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        
+        .form-group-contact input,
+        .form-group-contact textarea {
+            width: 100%;
+            padding: 0.7rem;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+        
+        .form-group-contact input:focus,
+        .form-group-contact textarea:focus {
+            outline: none;
+            border-color: #2196f3;
+            box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.1);
+        }
+        
+        .form-group-contact textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .contact-submit-btn {
+            background: #ff7f50;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.8rem;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+            width: 100%;
+        }
+        
+        .contact-submit-btn:hover {
+            background: #ff6347;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 127, 80, 0.3);
+        }
+        
+        @media (max-width: 992px) {
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-header h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+        
+        .footer-logo {
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-logo h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-logo span {
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        .footer-links h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .contact-info p {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        
+        .contact-info i {
+            margin-top: 3px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 3rem;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-1000px) rotate(720deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-image {
+                margin-top: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--secondary);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 3rem;
+                transition: all 0.5s ease;
+            }
+            
+            nav ul.active {
+                left: 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .btn {
+                padding: 0.6rem 1.5rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .btn-group {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .btn-outline {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-text">
+                    <h1>ICEITF</h1>
+                    <span>Engineering Innovations Conference</span>
+                </div>
+            </div>
+            <nav>
+                <button class="mobile-menu-btn" id="menuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul id="navMenu">
+                   <li><a href="#home">Home</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#topics">Domains</a></li>
+<li><a href="#dates">Dates</a></li>
+<li><a href="#call-for-papers">Call for Papers</a></li>
+<li><a href="#awards">Awards</a></li>
+<li><a href="#past-events">Past Events</a></li>
+<li><a href="#contact">Contact</a></li>
+
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="floating-elements" id="floatingElements"></div>
+        <div class="hero-content">
+            <h1>International Conference on Engineering Innovations and Technology</h1>
+            <p>Join us to explore the latest advancements in engineering and technology for a better future.</p>
+            <div class="btn-group">
+                <a href="#dates" class="btn">Register Now</a>
+                <a href="#about" class="btn btn-outline">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="section-title">
+            <h2>About the Conference</h2>
+        </div>
+        <div class="about-content">
+            <div class="about-text">
+                <p>ICEITF is a premier global platform for researchers, academicians, and practitioners to explore and exchange ideas on the latest advancements in engineering and technology.</p>
+                <p>The conference aims to foster collaboration and knowledge sharing among experts in various fields of engineering and technology, with a focus on innovative applications that can shape a better future for humanity.</p>
+                <p>ICEITF will feature keynote speakers from leading institutions, paper presentations, panel discussions, and interactive sessions covering cutting-edge research and practical applications.</p>
+                <a href="#topics" class="btn">Explore Topics</a>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Conference attendees discussing">
+            </div>
+        </div>
+    </section>
+
+    <!-- Topics Section -->
+    <section class="section topics" id="topics">
+        <div class="section-title">
+            <h2>Key Topics</h2>
+        </div>
+        <div class="topics-grid">
+            <div class="topic-card">
+                <div class="topic-icon">
+                    <i class="fas fa-solar-panel"></i>
+                </div>
+                <div class="topic-content">
+                    <h3>Sustainable Energy Solutions</h3>
+                    <p>Renewable energy, energy efficiency, and sustainable infrastructure development for a greener future.</p>
+                </div>
+            </div>
+            <div class="topic-card">
+                <div class="topic-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="topic-content">
+                    <h3>Artificial Intelligence</h3>
+                    <p>AI applications, machine learning algorithms, and data science innovations transforming industries.</p>
+                </div>
+            </div>
+            <div class="topic-card">
+                <div class="topic-icon">
+                    <i class="fas fa-network-wired"></i>
+                </div>
+                <div class="topic-content">
+                    <h3>IoT and Smart Systems</h3>
+                    <p>Internet of Things applications, smart cities infrastructure, and intelligent systems integration.</p>
+                </div>
+            </div>
+            <div class="topic-card">
+                <div class="topic-icon">
+                    <i class="fas fa-atom"></i>
+                </div>
+                <div class="topic-content">
+                    <h3>Advanced Materials</h3>
+                    <p>New materials development, innovative manufacturing processes, and nanotechnology breakthroughs.</p>
+                </div>
+            </div>
+            <div class="topic-card">
+                <div class="topic-icon">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <div class="topic-content">
+                    <h3>Environmental Engineering</h3>
+                    <p>Environmental impact assessments, waste management solutions, and sustainable development strategies.</p>
+                </div>
+            </div>
+            <div class="topic-card">
+                <div class="topic-icon">
+                    <i class="fas fa-microchip"></i>
+                </div>
+                <div class="topic-content">
+                    <h3>Emerging Technologies</h3>
+                    <p>Cutting-edge innovations in various engineering disciplines pushing the boundaries of what's possible.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dates Section -->
+    <section class="dates" id="dates">
+        <div class="dates-container">
+            <div class="dates-header">
+                <h2>Important Dates</h2>
+                <p>Stay on schedule with the ICEITF submission and registration milestones.</p>
+            </div>
+            <div class="dates-grid">
+                <div class="date-card">
+                    <h3>Abstract Submission</h3>
+                    <div class="date-value">15th Jan 2026</div>
+                </div>
+                <div class="date-card">
+                    <h3>Acceptance Notification</h3>
+                    <div class="date-value">20th Jan 2026</div>
+                </div>
+                <div class="date-card">
+                    <h3>Full Paper Submission</h3>
+                    <div class="date-value">10th Feb 2026</div>
+                </div>
+                <div class="date-card">
+                    <h3>Early Bird Registration</h3>
+                    <div class="date-value">15th Feb 2026</div>
+                </div>
+                <div class="date-card">
+                    <h3>Registration Deadline</h3>
+                    <div class="date-value">10th March 2026</div>
+                </div>
+            </div>
+            <div class="dates-submit-btn">
+                <button onclick="document.getElementById('call-for-papers').scrollIntoView({behavior: 'smooth'})">Submit Abstract</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call for Papers Section -->
+    <section class="call-for-papers" id="call-for-papers">
+        <div class="call-for-papers-container">
+            <div class="cfp-header">
+                <h2>Call for Papers</h2>
+                <p>Submit your original research to be showcased at ICEITF.</p>
+            </div>
+            
+            <div class="cfp-content">
+                <!-- Left Card: Submission Guidelines -->
+                <div class="cfp-card">
+                    <h3><i class="fas fa-file-alt"></i> Submission Guidelines</h3>
+                    <ul class="guidelines-list">
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span>Original, unpublished manuscripts not under review elsewhere.</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span>Prepared in English using the official conference template.</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span>Submitted through the ICEITF online submission portal only.</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span>Peer-reviewed by domain experts appointed by the technical committee.</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span>Limit of 8 pages per paper (including figures, tables, and references).</span>
+                        </li>
+                    </ul>
+                    
+                    <!-- Paper Template Box -->
+                    <div class="template-box">
+                        <div class="template-box-header">
+                            <i class="fas fa-file-pdf"></i>
+                            <span>Paper Template</span>
+                        </div>
+                        <p>Download the official IEEE-styled template to format your manuscript correctly.</p>
+                        <a href="IEEE_Template.pdf" download="IEEE_Template.pdf" class="template-btn">
+                            <i class="fas fa-download"></i> Download IEEE Template
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Right Card: Publication Opportunities -->
+                <div class="cfp-card">
+                    <h3><i class="fas fa-book"></i> Publication Opportunities</h3>
+                    <p class="publication-text">
+                        All accepted papers will appear in the official ICEITF proceedings. Selected high-quality, extended versions will be invited for publication in special issues of renowned <strong>SCOPUS Indexed</strong> journals and partner book series.
+                    </p>
+                    <ul class="publication-list">
+                        <li>• Book Series of Data Science and Knowledge Engineering</li>
+                        <li>• Springer, JoVE, Frontiers, IEEE Access, Elsevier titles, IET & Inderscience journals</li>
+                        <li>• Fast-track collaboration opportunities with industry-backed editions</li>
+                    </ul>
+                    
+                    <!-- Submit Your Paper Box -->
+                    <div class="submit-box">
+                        <div class="submit-box-header">
+                            <i class="fas fa-file-pdf"></i>
+                            <span>Submit Your Paper</span>
+                        </div>
+                        <p>Send abstracts and full manuscripts to the organising committee.</p>
+                        <a href="#contact" class="submit-btn-primary">
+                            <i class="fas fa-paper-plane"></i> Submit to ICEITF
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Section -->
+    <section class="registration-section" id="registration">
+        <div class="registration-container">
+            <div class="registration-header">
+                <h2>Registration</h2>
+                <p>Choose the category that best fits your participation mode and membership status.</p>
+            </div>
+            
+            <div class="registration-table-container">
+                <table class="registration-table">
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Non-IEEE Members</th>
+                            <th>IEEE Members</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="section-header">
+                            <td colspan="3">INDIAN DELEGATES</td>
+                        </tr>
+                        <tr>
+                            <td>Faculty/Academia/Industry (Presentation & Publication)</td>
+                            <td>INR 29,999</td>
+                            <td>INR 27,999</td>
+                        </tr>
+                        <tr>
+                            <td>UG, PG Students / Research scholars (Presentation & Publication)</td>
+                            <td>INR 24,999</td>
+                            <td>INR 22,999</td>
+                        </tr>
+                        <tr>
+                            <td>Faculty/Academia/Industry (Only attending)</td>
+                            <td>INR 2,999</td>
+                            <td>INR 2,499</td>
+                        </tr>
+                        <tr>
+                            <td>UG, PG Students / Research (Only attending)</td>
+                            <td>INR 1,499</td>
+                            <td>INR 999</td>
+                        </tr>
+                        <tr class="section-header">
+                            <td colspan="3">FOREIGN DELEGATES</td>
+                        </tr>
+                        <tr>
+                            <td>Faculty/Academia/Industry (Presentation & Publication)</td>
+                            <td>275 $</td>
+                            <td>225 $</td>
+                        </tr>
+                        <tr>
+                            <td>UG, PG Students / Research scholars (Presentation & Publication)</td>
+                            <td>200 $</td>
+                            <td>175 $</td>
+                        </tr>
+                        <tr>
+                            <td>Faculty/Academia/Industry (Only attending)</td>
+                            <td>40 $</td>
+                            <td>35 $</td>
+                        </tr>
+                        <tr>
+                            <td>UG, PG Students / Research (Only attending)</td>
+                            <td>20 $</td>
+                            <td>15 $</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Committees Section -->
+    <section class="committees-section" id="committees">
+        <div class="committees-container">
+            <div class="committees-header">
+                <h2>Organising & Technical Committees</h2>
+                <p>ICEITF is powered by a diverse team of academic and industry advisors.</p>
+            </div>
+            
+            <div class="committee-card">
+                <h3>Technical Committee</h3>
+                <ul class="committee-members">
+                    <li>Dr Dheeraj Chitara, JECRC University</li>
+                    <li>Dr Waseem Ahmad Mir, JSPM University Pune</li>
+                    <li>Dr Biswaj Raman Das, IMIT</li>
+                    <li>Dr Shiva Shankar Reddy, ANU Kakinada</li>
+                    <li>Dr R. Manikandan, SASTRA Deemed University</li>
+                    <li>Uvesh Sipai, Marwadi University</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Awards Section -->
+    <section class="awards-section" id="awards">
+        <div class="awards-container">
+            <div class="awards-header">
+                <h2>Awards & Recognitions</h2>
+                <p>Celebrate excellence in research, innovation, and collaboration.</p>
+            </div>
+            
+            <div class="awards-grid">
+                <div class="award-card">
+                    <div class="award-content">
+                        <h3>Best Research Methodology Award</h3>
+                    </div>
+                </div>
+                
+                <div class="award-card">
+                    <div class="award-content">
+                        <h3>Excellence in Innovation Award</h3>
+                    </div>
+                </div>
+                
+                <div class="award-card">
+                    <div class="award-content">
+                        <h3>Best Collaborative Research Award</h3>
+                    </div>
+                </div>
+                
+                <div class="award-card">
+                    <div class="award-content">
+                        <h3>Industry Application Award</h3>
+                    </div>
+                </div>
+                
+                <div class="award-card">
+                    <div class="award-content">
+                        <h3>Best Paper Award</h3>
+                    </div>
+                </div>
+                
+                <div class="award-card">
+                    <div class="award-content">
+                        <h3>Best Presentation Award</h3>
+                    </div>
+                </div>
+                
+                <div class="award-card">
+                    <div class="award-content">
+                        <h3>Best Student Paper Award</h3>
+                    </div>
+                </div>
+                
+                <div class="award-card">
+                    <div class="award-content">
+                        <h3>Best Poster Presentation Award</h3>
+                    </div>
+                </div>
+                
+                <div class="award-card">
+                    <div class="award-content">
+                        <h3>Best Oral Presentation Award</h3>
+                    </div>
+                </div>
+                
+                <div class="award-card">
+                    <div class="award-content">
+                        <h3>Innovative Solution Award</h3>
+                    </div>
+                </div>
+                
+                <div class="award-card">
+                    <div class="award-content">
+                        <h3>Outstanding Research Contribution Award</h3>
+                    </div>
+                </div>
+                
+                <div class="award-card">
+                    <div class="award-content">
+                        <h3>Best Emerging Technology Award</h3>
+                    </div>
+                </div>
+                
+                <div class="award-card">
+                    <div class="award-content">
+                        <h3>Excellence in Engineering Award</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+              
+              <section id="past-events" style="padding: 50px 20px; background-color: #f9f9f9;">
+  <h2 style="text-align: center; font-family: 'Montserrat', sans-serif; font-size: 2em; margin-bottom: 40px;">
+    Our Past Events
+  </h2>
+
+  <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+    <img src="https://i.ibb.co/LhYWDBHC/1.png" alt="Past Event 1" style="max-width: 300px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+    <img src="https://i.ibb.co/8nzGmnVL/2.png" alt="Past Event 2" style="max-width: 300px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+    <img src="https://i.ibb.co/MDvdPWXk/3.png" alt="Past Event 3" style="max-width: 300px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+    <img src="https://i.ibb.co/2p0bF80/4.png" alt="Past Event 4" style="max-width: 300px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+    <img src="https://i.ibb.co/bR1GFRc4/5.png" alt="Past Event 5" style="max-width: 300px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+  </div>
+</section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="contact-container">
+            <div class="contact-header">
+                <h2>Contact Us</h2>
+                <p>Reach the ICEITF organising committee for submissions, partnerships, or media queries.</p>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-info-card">
+                    <ul class="contact-details">
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <strong>Email</strong>
+                                <span>iceitf@iceitf-conf.org</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-globe"></i>
+                            <div>
+                                <strong>Website</strong>
+                                <span><a href="https://iceitf.ca/" target="_blank">iceitf.ca</a></span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="contact-form-card">
+                    <h3>Send Us a Message</h3>
+                    <form id="contactForm">
+                        <div class="form-group-contact">
+                            <label for="contactName">Your Name</label>
+                            <input type="text" id="contactName" name="contactName" required>
+                        </div>
+                        
+                        <div class="form-group-contact">
+                            <label for="contactEmail">Your Email</label>
+                            <input type="email" id="contactEmail" name="contactEmail" required>
+                        </div>
+                        
+                        <div class="form-group-contact">
+                            <label for="contactSubject">Subject</label>
+                            <input type="text" id="contactSubject" name="contactSubject" required>
+                        </div>
+                        
+                        <div class="form-group-contact">
+                            <label for="contactMessage">Your Message</label>
+                            <textarea id="contactMessage" name="contactMessage" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="contact-submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <h3>ICEITF</h3>
+                    <span>Engineering Innovations Conference</span>
+                </div>
+                <p>The International Conference on Engineering Innovations and Technology for a Better Future (ICEITF) is a premier global platform for knowledge exchange in engineering and technology.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Conference</a></li>
+                    <li><a href="#topics">Conference Topics</a></li>
+                    <li><a href="#dates">Important Dates</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Participation</h4>
+                <ul>
+                    <li><a href="#">Call for Papers</a></li>
+                    <li><a href="#">Registration</a></li>
+                    <li><a href="#">Submission Guidelines</a></li>
+                    <li><a href="#">Program Schedule</a></li>
+                    <li><a href="#">Venue Information</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact Us</h4>
+<div class="contact-info">
+    <p><i class="fas fa-envelope"></i> iceitf@iceitf-conf.org</p>
+    <p><i class="fas fa-map-marker-alt"></i> Canada, NA</p>
+</div>
+
+                    
+                    
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2026 ICEITF Conference. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const navMenu = document.getElementById('navMenu');
+        
+        menuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            menuBtn.innerHTML = navMenu.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('#navMenu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Create floating elements
+        const floatingElements = document.getElementById('floatingElements');
+        
+        for (let i = 0; i < 15; i++) {
+            const element = document.createElement('div');
+            element.classList.add('floating-element');
+            
+            const size = Math.random() * 30 + 10;
+            const posX = Math.random() * 100;
+            const delay = Math.random() * 5;
+            const duration = Math.random() * 20 + 10;
+            
+            element.style.width = `${size}px`;
+            element.style.height = `${size}px`;
+            element.style.left = `${posX}%`;
+            element.style.bottom = `-${size}px`;
+            element.style.animationDelay = `${delay}s`;
+            element.style.animationDuration = `${duration}s`;
+            
+            floatingElements.appendChild(element);
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Contact Form Handler
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form data
+                const formData = new FormData(this);
+                
+                // Show success message (in a real application, this would submit to a server)
+                alert('Thank you for your message!\n\nWe have received your inquiry and will get back to you within 24-48 hours.\n\nName: ' + formData.get('contactName') + '\nEmail: ' + formData.get('contactEmail'));
+                
+                // Reset form
+                this.reset();
+                
+                // In a real application, you would send the formData to your server:
+                // fetch('/api/contact', {
+                //     method: 'POST',
+                //     body: formData
+                // })
+                // .then(response => response.json())
+                // .then(data => {
+                //     alert('Message sent successfully!');
+                // })
+                // .catch(error => {
+                //     alert('Error sending message. Please try again.');
+                // });
+            });
+        }
+        
+    </script>
+</body>
+</html>
+<!-- partial -->
+  
+</body>
+</html>
