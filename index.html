@@ -162,8 +162,33 @@
         
         .hero p {
             font-size: 1.2rem;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             line-height: 1.6;
+        }
+        
+        .hero-dates {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            margin-bottom: 2rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .hero-dates i {
+            font-size: 1.2rem;
+            color: white;
+        }
+        
+        .hero-dates span {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
         }
         
         .btn {
@@ -1353,6 +1378,14 @@
                 font-size: 1rem;
             }
             
+            .hero-dates {
+                padding: 0.8rem 1.5rem;
+            }
+            
+            .hero-dates span {
+                font-size: 1.1rem;
+            }
+            
             .btn {
                 padding: 0.6rem 1.5rem;
             }
@@ -1365,6 +1398,16 @@
         @media (max-width: 576px) {
             .hero h1 {
                 font-size: 1.8rem;
+            }
+            
+            .hero-dates {
+                padding: 0.7rem 1.2rem;
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .hero-dates span {
+                font-size: 1rem;
             }
             
             .btn-group {
@@ -1411,6 +1454,10 @@
         <div class="hero-content">
             <h1>IEEE International Conference on Engineering Innovations and Technology</h1>
             <p>Join us to explore the latest advancements in engineering and technology for a better future.</p>
+            <div class="hero-dates">
+                <i class="fas fa-calendar-alt"></i>
+                <span>12th to 13th April 2026</span>
+            </div>
             <div class="btn-group">
                 <a href="#dates" class="btn">Register Now</a>
                 <a href="#about" class="btn btn-outline">Learn More</a>
